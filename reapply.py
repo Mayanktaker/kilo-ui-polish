@@ -168,6 +168,10 @@ button[data-component=button]:has(.model-selector-trigger-label):hover{border-co
     # KILO-ROUND35-V1: host-map made --background-weak alias sideBar-background
     # (zero visual delta). Distinct literal shade until upstream tokens ship.
     ("KILO-ROUND35-V1", """.am-sidebar{background:#17181d!important;border-right:1px solid var(--border-weak-base)}"""),
+    ("KILO-ROUND36-V1", """[data-component=task-header]{background-color:#17181d}
+[data-slot=task-header-progress]{border-radius:4px}
+[data-slot=task-header-progress-fill]{border-radius:4px}
+.task-header-usage-trigger{border-radius:6px}"""),
 ]
 
 
