@@ -113,6 +113,7 @@ button[data-component=button]:has(.model-selector-trigger-label):hover{border-co
     ("KILO-ROUND25-V1", """[data-component=tool-trigger][data-clickable=true]{background-color:color-mix(in srgb,var(--surface-raised-base) 45%,transparent);border:1px solid transparent;border-radius:10px;padding:4px 8px}
 [data-component=collapsible]{border-radius:10px}"""),
     ("KILO-ROUND26-V1", """[data-slot=user-message-text]{background-color:color-mix(in srgb,var(--text-interactive-base) 14%,transparent);border-color:color-mix(in srgb,var(--text-interactive-base) 35%,transparent)}"""),
+    ("KILO-ROUND27-V1", """[data-component=user-message] [data-slot=user-message-text]{background-color:rgba(3,76,255,.16)!important;border:1px solid rgba(3,76,255,.45)!important}"""),
 ]
 
 

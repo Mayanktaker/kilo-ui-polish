@@ -53,6 +53,7 @@ The script:
 | ROUND24-V1 | 4 CSS | Session chips: default background + radius, deeper hover |
 | ROUND25-V1 | 4 CSS | Timeline rows (Reasoning/Shell/Write) as chips, collapsible 10px |
 | ROUND26-V1 | 4 CSS | User bubble link-blue tint (stands out from assistant in long sessions) |
+| ROUND27-V1 | 4 CSS | Stronger solid tint + border on user bubble (bidi rule override) |
 
 Covered bundles: `agent-manager.css`, `webview.css`, `marketplace.css`,
 `documents.css` (settings/account pages).
