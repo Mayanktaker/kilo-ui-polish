@@ -164,6 +164,7 @@ button[data-component=button]:has(.model-selector-trigger-label):hover{border-co
     ("KILO-ROUND32-V1", """.session-actions-row>[data-component=tooltip-trigger]>[data-component=button]{border-radius:10px}"""),
     ("KILO-ROUND33-V1", """.am-local-item,.am-worktree-item,.am-project-item>.am-sidebar-header{border-radius:10px}
 .am-wt-group-header,.am-section-header{border-radius:8px}"""),
+    ("KILO-ROUND34-V1", """.am-sidebar{background:var(--background-weak);border-right:1px solid var(--border-weak-base)}"""),
 ]
 
 
