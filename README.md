@@ -82,7 +82,7 @@ cp ~/.vscode/extensions/kilocode.kilo-code-*/dist/agent-manager.css.before-ui-pa
 | ROUND25-V1 | 4 CSS | Timeline rows as chips, collapsible 10px |
 | ROUND26–27 | 4 CSS | User bubble interactive tint |
 | ROUND28–29 | 4 CSS | Assistant bubble + icons outside card |
-| ROUND30–34 | 4 CSS | Reasoning revert, sidebar rows 10px, host-var fixes, sidebar inset background |
+| ROUND30–35 | 4 CSS | Reasoning revert, sidebar rows 10px, host-var fixes, sidebar inset background (distinct literal shade) |
 | TOKENS-V1 | 4 CSS | Token-compliance pass (kilo-design `tokens.json` v0.2.0) |
 
 </details>
