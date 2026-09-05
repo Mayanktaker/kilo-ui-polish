@@ -162,6 +162,8 @@ button[data-component=button]:has(.model-selector-trigger-label):hover{border-co
     ("KILO-ROUND31-V1", """[data-slot=text-part-body]{background:transparent;border:0;padding:0;margin-top:0}
 [data-component=todos]{border-radius:var(--radius-lg,10px)}"""),
     ("KILO-ROUND32-V1", """.session-actions-row>[data-component=tooltip-trigger]>[data-component=button]{border-radius:10px}"""),
+    ("KILO-ROUND33-V1", """.am-local-item,.am-worktree-item,.am-project-item>.am-sidebar-header{border-radius:10px}
+.am-wt-group-header,.am-section-header{border-radius:8px}"""),
 ]
 
 

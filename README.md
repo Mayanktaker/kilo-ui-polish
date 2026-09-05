@@ -60,6 +60,7 @@ The script:
 | TOKENS-V1 | 4 CSS | Token-compliance pass per [kilo-design](https://github.com/Kilo-Org/kilo-design) `tokens.json` v0.2.0: off-scale radii mapped (12px→xl 14, 6px→sm 4), raw rgba colors replaced with theme vars + `color-mix`. **This block is the PR-ready material.** |
 | ROUND31-V1 | 4 CSS | Assistant bubble removed (user tint only), todos card 10px |
 | ROUND32-V1 | 4 CSS | Session buttons 10px restored (host `--radius-lg` maps to 8px) |
+| ROUND33-V1 | 4 CSS | Sidebar rows 10px, group headers 8px (host `--radius-md` maps to 6px) |
 
 Covered bundles: `agent-manager.css`, `webview.css`, `marketplace.css`,
 `documents.css` (settings/account pages).
