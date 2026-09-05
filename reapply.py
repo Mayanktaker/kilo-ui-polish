@@ -122,6 +122,13 @@ button[data-component=button]:has(.model-selector-trigger-label):hover{border-co
 [data-component=reasoning-part]{background-color:rgba(255,255,255,.045);border:1px solid rgba(140,140,140,.14);border-radius:10px;padding:8px 12px;margin-top:8px}
 [data-component=collapsible]{background-color:rgba(255,255,255,.045);border:1px solid rgba(140,140,140,.14);border-radius:10px}
 [data-component=tool-trigger][data-clickable=true]{background:transparent;border:0;padding:4px 8px}"""),
+    ("KILO-ROUND30-V1", """[data-component=reasoning-part]{background:transparent;border:0;padding:0;margin-top:0}
+[data-component=collapsible]{background:transparent;border:0}
+[data-component=tool-trigger][data-clickable=true]{background-color:color-mix(in srgb,var(--surface-raised-base) 45%,transparent);border:1px solid transparent;border-radius:10px;padding:4px 8px}
+.am-local-item,.am-worktree-item,.am-project-item .am-sidebar-header,.am-project-item>.am-sidebar-header{border-radius:8px}
+.am-project-item>.am-sidebar-header{padding:4px 6px}
+.am-project-item:has(.am-local-item-active)>.am-sidebar-header{background-color:rgba(3,76,255,.16);border:1px solid rgba(3,76,255,.28)}
+.am-worktree-item-active,.am-local-item-active{background-color:rgba(3,76,255,.16)!important;border:1px solid rgba(3,76,255,.28)!important}"""),
 ]
 
 
