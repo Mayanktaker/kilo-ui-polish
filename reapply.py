@@ -161,6 +161,7 @@ button[data-component=button]:has(.model-selector-trigger-label):hover{border-co
 [data-component=markdown] thead tr:last-child th{border-bottom:2px solid var(--border-strong-base,var(--border-weak-base))}"""),
     ("KILO-ROUND31-V1", """[data-slot=text-part-body]{background:transparent;border:0;padding:0;margin-top:0}
 [data-component=todos]{border-radius:var(--radius-lg,10px)}"""),
+    ("KILO-ROUND32-V1", """.session-actions-row>[data-component=tooltip-trigger]>[data-component=button]{border-radius:10px}"""),
 ]
 
 
