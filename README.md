@@ -51,6 +51,7 @@ The script:
 | ROUND22-V1 | 4 CSS | Flat rows again (boxes removed) + prominent select-like triggers |
 | ROUND23-V1 | 4 CSS | Trigger specificity fix + hover radius on rows |
 | ROUND24-V1 | 4 CSS | Session chips: default background + radius, deeper hover |
+| ROUND25-V1 | 4 CSS | Timeline rows (Reasoning/Shell/Write) as chips, collapsible 10px |
 
 Covered bundles: `agent-manager.css`, `webview.css`, `marketplace.css`,
 `documents.css` (settings/account pages).
