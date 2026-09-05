@@ -52,6 +52,7 @@ The script:
 | ROUND23-V1 | 4 CSS | Trigger specificity fix + hover radius on rows |
 | ROUND24-V1 | 4 CSS | Session chips: default background + radius, deeper hover |
 | ROUND25-V1 | 4 CSS | Timeline rows (Reasoning/Shell/Write) as chips, collapsible 10px |
+| ROUND26-V1 | 4 CSS | User bubble link-blue tint (stands out from assistant in long sessions) |
 
 Covered bundles: `agent-manager.css`, `webview.css`, `marketplace.css`,
 `documents.css` (settings/account pages).
