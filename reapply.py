@@ -159,6 +159,8 @@ button[data-component=button]:has(.model-selector-trigger-label):hover{border-co
 .model-selector-item{background-color:transparent;border:0;border-radius:0}
 [data-component=markdown] thead th{background:color-mix(in srgb,var(--surface-base) 88%,var(--text-strong) 12%);font-weight:600;letter-spacing:.02em}
 [data-component=markdown] thead tr:last-child th{border-bottom:2px solid var(--border-strong-base,var(--border-weak-base))}"""),
+    ("KILO-ROUND31-V1", """[data-slot=text-part-body]{background:transparent;border:0;padding:0;margin-top:0}
+[data-component=todos]{border-radius:var(--radius-lg,10px)}"""),
 ]
 
 
