@@ -129,6 +129,36 @@ button[data-component=button]:has(.model-selector-trigger-label):hover{border-co
 .am-project-item>.am-sidebar-header{padding:4px 6px}
 .am-project-item:has(.am-local-item-active)>.am-sidebar-header{background-color:rgba(3,76,255,.16);border:1px solid rgba(3,76,255,.28)}
 .am-worktree-item-active,.am-local-item-active{background-color:rgba(3,76,255,.16)!important;border:1px solid rgba(3,76,255,.28)!important}"""),
+    # KILO-TOKENS-V1: token-compliant pass (kilo-design tokens.json v0.2.0).
+    # Off-scale 12px/6px -> scale (xl/sm); raw rgba colors -> vars + color-mix.
+    # This block supersedes earlier hard-coded colors for PR-readiness.
+    ("KILO-TOKENS-V1", """[data-component=question-dock]{border-radius:var(--radius-xl,14px)}
+[data-component=model-selector-popover]{border-radius:var(--radius-xl,14px)}
+.model-selector-star{border-radius:var(--radius-sm,4px)}
+.model-selector-item.active{background:linear-gradient(90deg,var(--text-interactive-base),color-mix(in srgb,var(--text-interactive-base) 82%,#fff 18%));color:var(--text-on-interactive-base,var(--text-strong))}
+.model-selector-item.active .model-selector-item-name,.model-selector-item.active .model-selector-item-name-main,.model-selector-item.active .model-selector-item-name-provider{color:var(--text-on-interactive-base,var(--text-strong));opacity:1}
+[data-component=model-selector-popover] [data-component=list] [data-slot=list-item][data-active=true]{background:linear-gradient(90deg,var(--text-interactive-base),color-mix(in srgb,var(--text-interactive-base) 82%,#fff 18%));color:var(--text-on-interactive-base,var(--text-strong))}
+[data-component=user-message] [data-slot=user-message-text]{background-color:color-mix(in srgb,var(--text-interactive-base) 16%,transparent)!important;border:1px solid color-mix(in srgb,var(--text-interactive-base) 28%,transparent)!important}
+[data-slot=text-part-body]{background-color:var(--surface-raised-base);border:1px solid var(--border-weak-base)}
+[data-slot=assistant-copy-wrapper]{margin-top:var(--spacing-1,4px);padding:0 2px}
+[data-component=reasoning-part]{background:transparent;border:0;padding:0;margin-top:0}
+[data-component=collapsible]{background:transparent;border:0}
+[data-component=tool-trigger][data-clickable=true]{background-color:color-mix(in srgb,var(--surface-raised-base) 45%,transparent);border:1px solid transparent;border-radius:var(--radius-lg,10px);padding:var(--spacing-1,4px) var(--spacing-2,8px)}
+.am-local-item,.am-worktree-item,.am-project-item>.am-sidebar-header{border-radius:var(--radius-md,8px)}
+.am-project-item>.am-sidebar-header{padding:var(--spacing-1,4px) var(--spacing-1_5,6px)}
+.am-project-item:has(.am-local-item-active)>.am-sidebar-header{background-color:color-mix(in srgb,var(--text-interactive-base) 16%,transparent);border:1px solid color-mix(in srgb,var(--text-interactive-base) 28%,transparent)}
+.am-worktree-item-active,.am-local-item-active{background-color:color-mix(in srgb,var(--text-interactive-base) 16%,transparent)!important;border:1px solid color-mix(in srgb,var(--text-interactive-base) 28%,transparent)!important}
+.session-actions-row>[data-component=tooltip-trigger]>[data-component=button]{border-radius:var(--radius-lg,10px);background-color:color-mix(in srgb,var(--surface-raised-base) 45%,transparent);border:1px solid transparent}
+.session-actions-row>[data-component=tooltip-trigger]>[data-component=button]:hover:not(:disabled){background-color:color-mix(in srgb,var(--surface-interactive-hover,var(--vscode-list-hoverBackground)) 70%,var(--text-strong) 8%);border-color:var(--border-strong-base,var(--border-weak-base))}
+[data-slot=question-options] [data-slot=question-option]{border-bottom:0}
+[data-slot=question-options] [data-slot=question-option]:nth-child(even){background-color:transparent}
+.model-selector-item:hover,.model-selector-item.selected{border-radius:var(--radius-md,8px)}
+button[data-component=button]:has(.model-selector-trigger-label){background-color:var(--vscode-input-background);border:1px solid var(--vscode-input-border,rgba(127,127,127,.35));border-radius:var(--radius-md,8px);padding:var(--spacing-1,4px) var(--spacing-2,8px)}
+button[data-component=button]:has(.model-selector-trigger-label):hover{border-color:var(--vscode-focusBorder,var(--text-interactive-base))}
+.model-selector-trigger-label{white-space:normal;overflow:visible;text-overflow:clip;text-align:end}
+.model-selector-item{background-color:transparent;border:0;border-radius:0}
+[data-component=markdown] thead th{background:color-mix(in srgb,var(--surface-base) 88%,var(--text-strong) 12%);font-weight:600;letter-spacing:.02em}
+[data-component=markdown] thead tr:last-child th{border-bottom:2px solid var(--border-strong-base,var(--border-weak-base))}"""),
 ]
 
 
