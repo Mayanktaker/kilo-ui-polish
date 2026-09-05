@@ -116,6 +116,12 @@ button[data-component=button]:has(.model-selector-trigger-label):hover{border-co
     ("KILO-ROUND27-V1", """[data-component=user-message] [data-slot=user-message-text]{background-color:rgba(3,76,255,.16)!important;border:1px solid rgba(3,76,255,.45)!important}"""),
     ("KILO-ROUND28-V1", """[data-component=user-message] [data-slot=user-message-text]{border:1px solid rgba(3,76,255,.28)!important}
 [data-component=text-part]{background-color:rgba(255,255,255,.045);border:1px solid rgba(140,140,140,.14);border-radius:10px;padding:8px 12px;margin-top:8px}"""),
+    ("KILO-ROUND29-V1", """[data-component=text-part]{background:transparent;border:0;padding:0}
+[data-slot=text-part-body]{background-color:rgba(255,255,255,.045);border:1px solid rgba(140,140,140,.14);border-radius:10px;padding:8px 12px;margin-top:8px}
+[data-slot=assistant-copy-wrapper]{margin-top:4px;padding:0 2px}
+[data-component=reasoning-part]{background-color:rgba(255,255,255,.045);border:1px solid rgba(140,140,140,.14);border-radius:10px;padding:8px 12px;margin-top:8px}
+[data-component=collapsible]{background-color:rgba(255,255,255,.045);border:1px solid rgba(140,140,140,.14);border-radius:10px}
+[data-component=tool-trigger][data-clickable=true]{background:transparent;border:0;padding:4px 8px}"""),
 ]
 
 

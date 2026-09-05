@@ -55,6 +55,7 @@ The script:
 | ROUND26-V1 | 4 CSS | User bubble link-blue tint (stands out from assistant in long sessions) |
 | ROUND27-V1 | 4 CSS | Stronger solid tint + border on user bubble (bidi rule override) |
 | ROUND28-V1 | 4 CSS | Assistant replies get neutral bubble; user border softened |
+| ROUND29-V1 | 4 CSS | Bubble on text body only (icons outside), reasoning + tool cards unified |
 
 Covered bundles: `agent-manager.css`, `webview.css`, `marketplace.css`,
 `documents.css` (settings/account pages).
