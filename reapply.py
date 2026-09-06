@@ -18,6 +18,9 @@ JS_DECORATE = {
     ],
 }
 JS_WRAP_TPL = "try{{for(let tbl of Array.from(e.querySelectorAll(\"table\"))){{if(tbl.closest(\"[data-component=markdown-table-wrapper]\"))continue;let w=document.createElement(\"div\");w.setAttribute(\"data-component\",\"markdown-table-wrapper\");tbl.parentNode&&tbl.parentNode.replaceChild(w,tbl);w.appendChild(tbl)}}}}catch(o){{}}/*{mark}*/"
+JS_CHIPS = """
+/*KILO-CHIPS-V1*/(function(){function d(){var b=document.querySelector('.prompt-input-hint-selectors');if(!b)return;var c=b.querySelectorAll('[data-component=button]');var th=/^(default|minimal|low|medium|high|xhigh)$/i;c.forEach(function(x,i){if(x.querySelector('.kilo-chip-icon'))return;var t=(x.textContent||'').trim();var ic=i===0?'\\u2699\\uFE0F':(i===2?'\\u{1F9E0}':'\\u2728');if(th.test(t))ic='\\u{1F9E0}';else if(i===1){var l=t.toLowerCase();if(l.indexOf('gateway')>-1)ic='\\u{1F537}';else if(l.indexOf('zen')>-1||l.indexOf('opencode')>-1)ic='\\u{1F300}';else if(l.indexOf('glm')>-1||l.indexOf('minimax')>-1||l.indexOf('stepfun')>-1||l.indexOf('free')>-1)ic='\\u26A1';}var s=document.createElement('span');s.className='kilo-chip-icon';s.textContent=ic;x.prepend(s);});}new MutationObserver(d).observe(document.documentElement,{childList:true,subtree:true});d();})();
+"""
 
 BLOCKS = [
     ("KILO-TABLE-FIX-V1", """[data-component=markdown] table{width:100%;display:block;overflow:auto;margin:16px 0;font-size:var(--font-size-base);border:1px solid var(--border-weak-base);border-radius:10px;border-collapse:separate;border-spacing:0;padding:0;background:var(--surface-base)}
@@ -172,6 +175,7 @@ button[data-component=button]:has(.model-selector-trigger-label):hover{border-co
 [data-slot=task-header-progress]{border-radius:4px}
 [data-slot=task-header-progress-fill]{border-radius:4px}
 .task-header-usage-trigger{border-radius:6px}"""),
+    ("KILO-ROUND37-V1", """.kilo-chip-icon{margin-right:2px;font-size:12px;line-height:1;flex-shrink:0}"""),
 ]
 
 
@@ -228,6 +232,16 @@ def main():
         new_fn = old[:-1] + ";" + JS_WRAP_TPL.format(mark="KILO-JS-WRAP-V1") + "}"
         open(p, "w", errors="ignore").write(cur.replace(old, new_fn, 1))
         print(js_name, "wrapper injected")
+    for js_name in ["agent-manager.js", "webview.js"]:
+        p = os.path.join(dist, js_name)
+        if not os.path.exists(p):
+            continue
+        cur = open(p, errors="ignore").read()
+        if "KILO-CHIPS-V1" in cur:
+            print(js_name, "chip icons already present")
+            continue
+        open(p, "w", errors="ignore").write(cur + JS_CHIPS)
+        print(js_name, "chip icons injected")
     print("DONE. VS Code me Developer: Reload Window karo.")
 
 
