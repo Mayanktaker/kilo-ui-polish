@@ -84,6 +84,7 @@ cp ~/.vscode/extensions/kilocode.kilo-code-*/dist/agent-manager.css.before-ui-pa
 | ROUND28–29 | 4 CSS | Assistant bubble + icons outside card |
 | ROUND30–36 | 4 CSS | Reasoning revert, sidebar rows 10px, host-var fixes, sidebar + task-header inset shade, rounded progress bar and usage pill |
 | ROUND37-V1 | 4 CSS + 2 JS | Chip icons (mode ⚙️ / thinking 🧠 / provider emoji) via observer |
+| ROUND38-V1 | 4 CSS + 2 JS | Monochrome per-mode list icons, compact 320px mode list |
 | TOKENS-V1 | 4 CSS | Token-compliance pass (kilo-design `tokens.json` v0.2.0) |
 
 </details>

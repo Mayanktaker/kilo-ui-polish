@@ -21,6 +21,9 @@ JS_WRAP_TPL = "try{{for(let tbl of Array.from(e.querySelectorAll(\"table\"))){{i
 JS_CHIPS = """
 /*KILO-CHIPS-V1*/(function(){function d(){var b=document.querySelector('.prompt-input-hint-selectors');if(!b)return;var c=b.querySelectorAll('[data-component=button]');var th=/^(default|minimal|low|medium|high|xhigh)$/i;c.forEach(function(x,i){if(x.querySelector('.kilo-chip-icon'))return;var t=(x.textContent||'').trim();var ic=i===0?'\\u2699\\uFE0F':(i===2?'\\u{1F9E0}':'\\u2728');if(th.test(t))ic='\\u{1F9E0}';else if(i===1){var l=t.toLowerCase();if(l.indexOf('gateway')>-1)ic='\\u{1F537}';else if(l.indexOf('zen')>-1||l.indexOf('opencode')>-1)ic='\\u{1F300}';else if(l.indexOf('glm')>-1||l.indexOf('minimax')>-1||l.indexOf('stepfun')>-1||l.indexOf('free')>-1)ic='\\u26A1';}var s=document.createElement('span');s.className='kilo-chip-icon';s.textContent=ic;x.prepend(s);});}new MutationObserver(d).observe(document.documentElement,{childList:true,subtree:true});d();})();
 """
+JS_LISTICONS = """
+/*KILO-LISTICONS-V1*/(function(){var M=[['debug','\\u{1F41E}'],['architect','\\u{1F4D0}'],['ask','\\u2753'],['reviewer','\\u{1F440}'],['simplif','\\u2728'],['skeptic','\\u{1F9D0}'],['docs','\\u{1F4C4}'],['flutter','\\u{1F4F1}'],['frontend','\\u{1F3A8}'],['plan','\\u{1F4CB}'],['test','\\u{1F9EA}'],['code','\\u{1F4BB}']];function em(t){t=(t||'').toLowerCase();for(var i=0;i<M.length;i++){if(t.indexOf(M[i][0])>-1)return M[i][1];}return'\\u{1F4BB}';}function d(){document.querySelectorAll('.mode-switcher-item').forEach(function(it){if(it.querySelector('.kilo-list-icon'))return;var t=(it.textContent||'').trim();var w=document.createElement('div');w.style.cssText='display:flex;flex-direction:column;min-width:0;flex:1';while(it.firstChild){w.appendChild(it.firstChild);}var s=document.createElement('span');s.className='kilo-chip-icon kilo-list-icon';s.textContent=em(t);it.appendChild(s);it.appendChild(w);it.style.display='flex';it.style.flexDirection='row';it.style.alignItems='flex-start';it.style.gap='8px';});document.querySelectorAll('.thinking-selector-item').forEach(function(it){if(it.querySelector('.kilo-list-icon'))return;var s=document.createElement('span');s.className='kilo-chip-icon kilo-list-icon';s.textContent='\\u{1F9E0}';it.prepend(s);it.style.display='flex';it.style.alignItems='center';it.style.gap='8px';});}new MutationObserver(d).observe(document.documentElement,{childList:true,subtree:true});d();})();
+"""
 
 BLOCKS = [
     ("KILO-TABLE-FIX-V1", """[data-component=markdown] table{width:100%;display:block;overflow:auto;margin:16px 0;font-size:var(--font-size-base);border:1px solid var(--border-weak-base);border-radius:10px;border-collapse:separate;border-spacing:0;padding:0;background:var(--surface-base)}
@@ -176,6 +179,8 @@ button[data-component=button]:has(.model-selector-trigger-label):hover{border-co
 [data-slot=task-header-progress-fill]{border-radius:4px}
 .task-header-usage-trigger{border-radius:6px}"""),
     ("KILO-ROUND37-V1", """.kilo-chip-icon{margin-right:2px;font-size:12px;line-height:1;flex-shrink:0}"""),
+    ("KILO-ROUND38-V1", """.kilo-list-icon{filter:grayscale(1);opacity:.75;font-size:14px;line-height:1.4;flex-shrink:0;margin-top:1px}
+.mode-switcher-list{max-height:320px}"""),
 ]
 
 
@@ -242,6 +247,16 @@ def main():
             continue
         open(p, "w", errors="ignore").write(cur + JS_CHIPS)
         print(js_name, "chip icons injected")
+    for js_name in ["agent-manager.js", "webview.js"]:
+        p = os.path.join(dist, js_name)
+        if not os.path.exists(p):
+            continue
+        cur = open(p, errors="ignore").read()
+        if "KILO-LISTICONS-V1" in cur:
+            print(js_name, "list icons already present")
+            continue
+        open(p, "w", errors="ignore").write(cur + JS_LISTICONS)
+        print(js_name, "list icons injected")
     print("DONE. VS Code me Developer: Reload Window karo.")
 
 
