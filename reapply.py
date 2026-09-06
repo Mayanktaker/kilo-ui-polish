@@ -24,6 +24,9 @@ JS_CHIPS = """
 JS_LISTICONS = """
 /*KILO-LISTICONS-V1*/(function(){var M=[['debug','\\u{1F41E}'],['architect','\\u{1F4D0}'],['ask','\\u2753'],['reviewer','\\u{1F440}'],['simplif','\\u2728'],['skeptic','\\u{1F9D0}'],['docs','\\u{1F4C4}'],['flutter','\\u{1F4F1}'],['frontend','\\u{1F3A8}'],['plan','\\u{1F4CB}'],['test','\\u{1F9EA}'],['code','\\u{1F4BB}']];function em(t){t=(t||'').toLowerCase();for(var i=0;i<M.length;i++){if(t.indexOf(M[i][0])>-1)return M[i][1];}return'\\u{1F4BB}';}function d(){document.querySelectorAll('.mode-switcher-item').forEach(function(it){if(it.querySelector('.kilo-list-icon'))return;var t=(it.textContent||'').trim();var w=document.createElement('div');w.style.cssText='display:flex;flex-direction:column;min-width:0;flex:1';while(it.firstChild){w.appendChild(it.firstChild);}var s=document.createElement('span');s.className='kilo-chip-icon kilo-list-icon';s.textContent=em(t);it.appendChild(s);it.appendChild(w);it.style.display='flex';it.style.flexDirection='row';it.style.alignItems='flex-start';it.style.gap='8px';});document.querySelectorAll('.thinking-selector-item').forEach(function(it){if(it.querySelector('.kilo-list-icon'))return;var s=document.createElement('span');s.className='kilo-chip-icon kilo-list-icon';s.textContent='\\u{1F9E0}';it.prepend(s);it.style.display='flex';it.style.alignItems='center';it.style.gap='8px';});}new MutationObserver(d).observe(document.documentElement,{childList:true,subtree:true});d();})();
 """
+JS_MODELICONS = """
+/*KILO-MODELICONS-V1*/(function(){function d(){document.querySelectorAll('.model-selector-item').forEach(function(it){if(it.querySelector('.kilo-list-icon'))return;var t=(it.textContent||'').toLowerCase();var ic='\\u2728';if(t.indexOf('gateway')>-1)ic='\\u{1F537}';else if(t.indexOf('z.ai')>-1)ic='\\u26A1';else if(t.indexOf('zen')>-1||t.indexOf('opencode')>-1)ic='\\u{1F300}';var s=document.createElement('span');s.className='kilo-chip-icon kilo-list-icon';s.textContent=ic;it.prepend(s);});}new MutationObserver(d).observe(document.documentElement,{childList:true,subtree:true});d();})();
+"""
 
 BLOCKS = [
     ("KILO-TABLE-FIX-V1", """[data-component=markdown] table{width:100%;display:block;overflow:auto;margin:16px 0;font-size:var(--font-size-base);border:1px solid var(--border-weak-base);border-radius:10px;border-collapse:separate;border-spacing:0;padding:0;background:var(--surface-base)}
@@ -181,6 +184,7 @@ button[data-component=button]:has(.model-selector-trigger-label):hover{border-co
     ("KILO-ROUND37-V1", """.kilo-chip-icon{margin-right:2px;font-size:12px;line-height:1;flex-shrink:0}"""),
     ("KILO-ROUND38-V1", """.kilo-list-icon{filter:grayscale(1);opacity:.75;font-size:14px;line-height:1.4;flex-shrink:0;margin-top:1px}
 .mode-switcher-list{max-height:320px}"""),
+    ("KILO-ROUND39-V1", """.mode-switcher-list{max-height:300px!important;overflow-y:auto}"""),
 ]
 
 
@@ -257,6 +261,16 @@ def main():
             continue
         open(p, "w", errors="ignore").write(cur + JS_LISTICONS)
         print(js_name, "list icons injected")
+    for js_name in ["agent-manager.js", "webview.js"]:
+        p = os.path.join(dist, js_name)
+        if not os.path.exists(p):
+            continue
+        cur = open(p, errors="ignore").read()
+        if "KILO-MODELICONS-V1" in cur:
+            print(js_name, "model icons already present")
+            continue
+        open(p, "w", errors="ignore").write(cur + JS_MODELICONS)
+        print(js_name, "model icons injected")
     print("DONE. VS Code me Developer: Reload Window karo.")
 
 
