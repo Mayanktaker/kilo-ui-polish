@@ -86,6 +86,7 @@ cp ~/.vscode/extensions/kilocode.kilo-code-*/dist/agent-manager.css.before-ui-pa
 | ROUND37-V1 | 4 CSS + 2 JS | Chip icons (mode ⚙️ / thinking 🧠 / provider emoji) via observer |
 | ROUND38-V1 | 4 CSS + 2 JS | Monochrome per-mode list icons, compact 320px mode list |
 | ROUND39-V1 | 4 CSS + 2 JS | Mode list hard cap 300px, monochrome provider icons on model rows |
+| ROUND40-V1 | 4 CSS | Modern tab bar: inset shade, rounded tabs, stronger active |
 | TOKENS-V1 | 4 CSS | Token-compliance pass (kilo-design `tokens.json` v0.2.0) |
 
 </details>

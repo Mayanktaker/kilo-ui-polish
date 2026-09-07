@@ -185,6 +185,10 @@ button[data-component=button]:has(.model-selector-trigger-label):hover{border-co
     ("KILO-ROUND38-V1", """.kilo-list-icon{filter:grayscale(1);opacity:.75;font-size:14px;line-height:1.4;flex-shrink:0;margin-top:1px}
 .mode-switcher-list{max-height:320px}"""),
     ("KILO-ROUND39-V1", """.mode-switcher-list{max-height:300px!important;overflow-y:auto}"""),
+    ("KILO-ROUND40-V1", """.session-tab-bar{background-color:#17181d}
+.session-tab-bar .am-tab,.am-tab{border-radius:8px 8px 0 0}
+.session-tab-bar .am-tab-active,.am-tab-active{background:color-mix(in srgb,var(--surface-interactive-base) 18%,transparent)}
+.session-tab-bar [data-component=icon-button]{border-radius:8px}"""),
 ]
 
 
