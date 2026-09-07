@@ -191,6 +191,10 @@ button[data-component=button]:has(.model-selector-trigger-label):hover{border-co
 .session-tab-bar [data-component=icon-button]{border-radius:8px}"""),
     ("KILO-ROUND41-V1", """div:has(>.model-selector-trigger-label),button:has(>.model-selector-trigger-label){background-color:var(--vscode-input-background);border:1px solid var(--vscode-input-border,rgba(127,127,127,.35));border-radius:8px;padding:4px 8px}
 div:has(>.model-selector-trigger-label):hover,button:has(>.model-selector-trigger-label):hover{border-color:var(--vscode-focusBorder,var(--text-interactive-base))}"""),
+    ("KILO-ROUND42-V1", """[data-slot=select-select-trigger]{border-radius:8px;background-color:color-mix(in srgb,var(--surface-raised-base) 40%,transparent)!important;border:1px solid var(--border-weak-base)}
+[data-slot=select-select-trigger]:hover{background-color:var(--surface-raised-base-hover)}
+[data-slot=select-select-trigger][data-expanded]{border-color:var(--text-interactive-base)}
+[data-slot=select-select-trigger-value]{white-space:nowrap;overflow:visible;text-overflow:clip}"""),
 ]
 
 
