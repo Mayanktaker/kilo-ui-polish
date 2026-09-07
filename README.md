@@ -103,6 +103,7 @@ cp ~/.vscode/extensions/kilocode.kilo-code-*/dist/agent-manager.css.before-ui-pa
 | ROUND54-V1 | 4 CSS | Agent Manager rows/tabs literal `10px` (token override `4px` fix) — radius-only, hang-safe, ROUND43-45 stay reverted |
 | ROUND55-V1 | 4 CSS | Chat hint hover match: wrapper + hover/expanded/focus states literal `10px` with `background-clip` — halo shape same as resting |
 | ROUND56-V1 | 4 CSS | Dialogs + inputs: shell `14px` (native `2px`), inputs/tabs/pills/buttons `10px` — radius-only |
+| ROUND57-V1 | 4 CSS | Worktree dialog leftovers (real selectors): New/Import tabs + name input `10px`, version strip `10px` + inner pills `8px` |
 | TOKENS-V1 | 4 CSS | Token-compliance pass (kilo-design `tokens.json` v0.2.0) |
 
 </details>

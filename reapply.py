@@ -292,6 +292,13 @@ div:has(>.model-selector-trigger-label):hover,button:has(>.model-selector-trigge
 [data-component=textarea],[data-slot=input-wrapper],input,textarea,[data-component=prompt-input-form],.prompt-input-container{border-radius:10px!important}
 .am-nv-dialog [data-component=button],[data-slot=dialog-footer] [data-component=button]{border-radius:10px!important}
 .am-version-pill,.am-compare-models,[data-slot=tab]{border-radius:10px!important}"""),
+    # KILO-ROUND57-V1: New Worktree dialog leftovers — real selectors (ROUND56 guesses missed).
+    # Tabs + name input 10px, version strip 10px with inner pills 8px — radius-only.
+    ("KILO-ROUND57-V1", """.am-tab-switcher-pill,.am-tab-switcher-pill-active{border-radius:10px!important}
+.am-nv-name-input{border-radius:10px!important}
+.am-nv-pills{border-radius:10px!important}
+.am-nv-pill{border-radius:8px!important}
+.am-nv-pill-compare,.am-nv-pill-back{border-radius:8px!important}"""),
 ]
 
 
