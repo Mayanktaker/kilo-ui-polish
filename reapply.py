@@ -189,6 +189,8 @@ button[data-component=button]:has(.model-selector-trigger-label):hover{border-co
 .session-tab-bar .am-tab,.am-tab{border-radius:8px 8px 0 0}
 .session-tab-bar .am-tab-active,.am-tab-active{background:color-mix(in srgb,var(--surface-interactive-base) 18%,transparent)}
 .session-tab-bar [data-component=icon-button]{border-radius:8px}"""),
+    ("KILO-ROUND41-V1", """div:has(>.model-selector-trigger-label),button:has(>.model-selector-trigger-label){background-color:var(--vscode-input-background);border:1px solid var(--vscode-input-border,rgba(127,127,127,.35));border-radius:8px;padding:4px 8px}
+div:has(>.model-selector-trigger-label):hover,button:has(>.model-selector-trigger-label):hover{border-color:var(--vscode-focusBorder,var(--text-interactive-base))}"""),
 ]
 
 
