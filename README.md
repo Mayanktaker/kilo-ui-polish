@@ -89,6 +89,7 @@ cp ~/.vscode/extensions/kilocode.kilo-code-*/dist/agent-manager.css.before-ui-pa
 | ROUND40-V1 | 4 CSS | Modern tab bar: inset shade, rounded tabs, stronger active |
 | ROUND41-V1 | 4 CSS | Tag-agnostic settings trigger rounding (`:has`) — later superseded |
 | ROUND42-V1 | 4 CSS | Settings Radix select triggers: 8px + bg + blue expand border (true model picker fix) |
+| ROUND43-V1 | 4 CSS + 2 JS | Sidebar clarity: section eyebrow caps, "active" pill on the project containing the live session, stronger active label, divider between projects |
 | TOKENS-V1 | 4 CSS | Token-compliance pass (kilo-design `tokens.json` v0.2.0) |
 
 </details>
