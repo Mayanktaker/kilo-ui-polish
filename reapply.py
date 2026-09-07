@@ -204,6 +204,11 @@ div:has(>.model-selector-trigger-label):hover,button:has(>.model-selector-trigge
 .kilo-active-marker{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-interactive-base);background:color-mix(in srgb,var(--text-interactive-base) 16%,transparent);border-radius:4px;padding:1px 5px;margin-left:6px;flex-shrink:0;font-weight:600}
 .am-project-item>.am-sidebar-header>.am-sidebar-header-main{align-items:center;flex:1;min-width:0}
 .am-project-item>.am-sidebar-header>.am-sidebar-header-actions{gap:2px;flex-shrink:0}"""),
+    ("KILO-ROUND44-V1", """.am-projects-list{background:none}
+.am-project{margin-bottom:6px}
+.am-sidebar-header.am-project-item{padding:6px 8px}
+.am-project:has(.am-local-item-active)>.am-sidebar-header{background-color:rgba(3,76,255,.16);border:1px solid rgba(3,76,255,.28)}
+.am-project:has(.am-local-item-active)>.am-sidebar-header .am-sidebar-header-label{font-weight:600;color:var(--text-strong)}"""),
 ]
 
 
@@ -301,6 +306,17 @@ def main():
             continue
         open(p, "w", errors="ignore").write(cur + JS_ACTIVE)
         print(js_name, "active marker injected")
+    JS_ACTIVE2 = "\n/*KILO-ACTIVE-MARKER-V2*/(function(){function d(){document.querySelectorAll('.am-project').forEach(function(p){var h=p.querySelector(':scope>.am-sidebar-header');if(!h||h.querySelector('.kilo-active-marker'))return;if(!p.querySelector('.am-local-item-active,.am-worktree-item-active'))return;var m=document.createElement('span');m.className='kilo-active-marker';m.textContent='active';var lbl=h.querySelector('.am-sidebar-header-label');if(lbl&&lbl.parentNode)lbl.parentNode.insertBefore(m,lbl.nextSibling);});}new MutationObserver(d).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});d();})();\n"
+    for js_name in ["agent-manager.js", "webview.js"]:
+        p = os.path.join(dist, js_name)
+        if not os.path.exists(p):
+            continue
+        cur = open(p, errors="ignore").read()
+        if "KILO-ACTIVE-MARKER-V2" in cur:
+            print(js_name, "active marker V2 already present")
+            continue
+        open(p, "w", errors="ignore").write(cur + JS_ACTIVE2)
+        print(js_name, "active marker V2 injected")
     print("DONE. VS Code me Developer: Reload Window karo.")
 
 

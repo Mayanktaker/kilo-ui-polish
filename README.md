@@ -90,6 +90,7 @@ cp ~/.vscode/extensions/kilocode.kilo-code-*/dist/agent-manager.css.before-ui-pa
 | ROUND41-V1 | 4 CSS | Tag-agnostic settings trigger rounding (`:has`) — later superseded |
 | ROUND42-V1 | 4 CSS | Settings Radix select triggers: 8px + bg + blue expand border (true model picker fix) |
 | ROUND43-V1 | 4 CSS + 2 JS | Sidebar clarity: section eyebrow caps, "active" pill on the project containing the live session, stronger active label, divider between projects |
+| ROUND44-V1 | 4 CSS + 2 JS | Fix: header+item are the same element (child selectors missed), cutting gradient divider removed, active header tint + pill V2 |
 | TOKENS-V1 | 4 CSS | Token-compliance pass (kilo-design `tokens.json` v0.2.0) |
 
 </details>
