@@ -209,6 +209,8 @@ div:has(>.model-selector-trigger-label):hover,button:has(>.model-selector-trigge
 .am-sidebar-header.am-project-item{padding:6px 8px}
 .am-project:has(.am-local-item-active)>.am-sidebar-header{background-color:rgba(3,76,255,.16);border:1px solid rgba(3,76,255,.28)}
 .am-project:has(.am-local-item-active)>.am-sidebar-header .am-sidebar-header-label{font-weight:600;color:var(--text-strong)}"""),
+    ("KILO-ROUND45-V1", """.am-project.kilo-live>.am-sidebar-header{background-color:rgba(3,76,255,.16);border:1px solid rgba(3,76,255,.28);border-radius:10px}
+.am-project.kilo-live>.am-sidebar-header .am-sidebar-header-label{font-weight:600;color:var(--text-strong)}"""),
 ]
 
 
@@ -317,6 +319,17 @@ def main():
             continue
         open(p, "w", errors="ignore").write(cur + JS_ACTIVE2)
         print(js_name, "active marker V2 injected")
+    JS_ACTIVE3 = "\n/*KILO-ACTIVE-MARKER-V3*/(function(){function d(){var ps=Array.prototype.slice.call(document.querySelectorAll('.am-project'));document.querySelectorAll('.kilo-active-marker').forEach(function(m){m.remove();});ps.forEach(function(p){p.classList.remove('kilo-live');});var live=ps.filter(function(p){return p.querySelector('.am-local-status[data-activity]:not([data-activity=\"idle\"])');});var t=live[0];if(!t)return;t.classList.add('kilo-live');var h=t.querySelector(':scope>.am-sidebar-header');if(!h||h.querySelector('.kilo-active-marker'))return;var m=document.createElement('span');m.className='kilo-active-marker';m.textContent='active';var lbl=h.querySelector('.am-sidebar-header-label');if(lbl&&lbl.parentNode)lbl.parentNode.insertBefore(m,lbl.nextSibling);}new MutationObserver(d).observe(document.documentElement,{childList:true,subtree:true,attributes:true});d();})();\n"
+    for js_name in ["agent-manager.js", "webview.js"]:
+        p = os.path.join(dist, js_name)
+        if not os.path.exists(p):
+            continue
+        cur = open(p, errors="ignore").read()
+        if "KILO-ACTIVE-MARKER-V3" in cur:
+            print(js_name, "active marker V3 already present")
+            continue
+        open(p, "w", errors="ignore").write(cur + JS_ACTIVE3)
+        print(js_name, "active marker V3 injected")
     print("DONE. VS Code me Developer: Reload Window karo.")
 
 
