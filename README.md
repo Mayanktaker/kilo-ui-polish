@@ -102,6 +102,7 @@ cp ~/.vscode/extensions/kilocode.kilo-code-*/dist/agent-manager.css.before-ui-pa
 | ROUND53-V1 | 4 CSS | Kilo Settings dropdowns (`popover-trigger` in `settings-row-input`) fixed `10px` — select-trigger rule never matched settings |
 | ROUND54-V1 | 4 CSS | Agent Manager rows/tabs literal `10px` (token override `4px` fix) — radius-only, hang-safe, ROUND43-45 stay reverted |
 | ROUND55-V1 | 4 CSS | Chat hint hover match: wrapper + hover/expanded/focus states literal `10px` with `background-clip` — halo shape same as resting |
+| ROUND56-V1 | 4 CSS | Dialogs + inputs: shell `14px` (native `2px`), inputs/tabs/pills/buttons `10px` — radius-only |
 | TOKENS-V1 | 4 CSS | Token-compliance pass (kilo-design `tokens.json` v0.2.0) |
 
 </details>

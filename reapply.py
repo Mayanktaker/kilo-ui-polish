@@ -285,6 +285,13 @@ div:has(>.model-selector-trigger-label):hover,button:has(>.model-selector-trigge
     ("KILO-ROUND55-V1", """.prompt-input-hint-selectors>[data-component=tooltip-trigger]{border-radius:10px!important}
 .prompt-input-hint-selectors [data-component=button]{border-radius:10px!important;background-clip:padding-box}
 .prompt-input-hint-selectors [data-component=button]:hover,.prompt-input-hint-selectors [data-component=button][data-expanded],.prompt-input-hint-selectors [data-component=button]:focus-visible,.prompt-input-hint-selectors [data-component=button]:active{border-radius:10px!important;background-clip:padding-box}"""),
+    # KILO-ROUND56-V1: dialogs + inputs literal radius (native dialog shell 2px).
+    # Shell 14px, inputs/tabs/pills/buttons 10px — radius-only, no layout change.
+    ("KILO-ROUND56-V1", """[data-component=dialog],[data-slot=dialog-content]{border-radius:14px!important;overflow:hidden}
+[data-slot=dialog-body]{border-radius:0 0 14px 14px!important;overflow:hidden}
+[data-component=textarea],[data-slot=input-wrapper],input,textarea,[data-component=prompt-input-form],.prompt-input-container{border-radius:10px!important}
+.am-nv-dialog [data-component=button],[data-slot=dialog-footer] [data-component=button]{border-radius:10px!important}
+.am-version-pill,.am-compare-models,[data-slot=tab]{border-radius:10px!important}"""),
 ]
 
 
