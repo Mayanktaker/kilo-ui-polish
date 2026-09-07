@@ -5,6 +5,11 @@ import glob
 import os
 import shutil
 
+# © Mayanktaker safety switch (2026-09-07 hang fix): JS observers OFF by default.
+# V3 active-marker caused MutationObserver infinite loop -> skeleton + VS Code hang.
+ENABLE_JS_PATCH = False
+# Recent AM sidebar rounds 43-45 suspected — skip until re-designed without JS.
+SKIP_CSS_MARKS = {"KILO-ROUND43-V1", "KILO-ROUND44-V1", "KILO-ROUND45-V1"}
 CSS_FILES = ["agent-manager.css", "webview.css", "marketplace.css", "documents.css"]
 JS_DECORATE = {
     # 7.5.9 names first, then 7.5.14 — script tries each in order
@@ -27,6 +32,10 @@ JS_LISTICONS = """
 JS_MODELICONS = """
 /*KILO-MODELICONS-V1*/(function(){function d(){document.querySelectorAll('.model-selector-item').forEach(function(it){if(it.querySelector('.kilo-list-icon'))return;var t=(it.textContent||'').toLowerCase();var ic='\\u2728';if(t.indexOf('gateway')>-1)ic='\\u{1F537}';else if(t.indexOf('z.ai')>-1)ic='\\u26A1';else if(t.indexOf('zen')>-1||t.indexOf('opencode')>-1)ic='\\u{1F300}';var s=document.createElement('span');s.className='kilo-chip-icon kilo-list-icon';s.textContent=ic;it.prepend(s);});}new MutationObserver(d).observe(document.documentElement,{childList:true,subtree:true});d();})();
 """
+# © Mayanktaker JS guard (2026-09-07): any future observer MUST use this shape.
+# Rules: throttle via rAF, disconnect while mutating, attributeFilter mandatory,
+# never observe attributes:true bare, never remove+re-add own trigger nodes.
+SAFE_OBSERVE_TPL = """/*{mark}*/(function(){var scheduled=false;var obs=null;function run(){scheduled=false;if(obs)obs.disconnect();try{d();}finally{if(obs)obs.observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});}}function schedule(){if(scheduled)return;scheduled=true;requestAnimationFrame(run);}obs=new MutationObserver(schedule);obs.observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});d();})();"""
 
 BLOCKS = [
     ("KILO-TABLE-FIX-V1", """[data-component=markdown] table{width:100%;display:block;overflow:auto;margin:16px 0;font-size:var(--font-size-base);border:1px solid var(--border-weak-base);border-radius:10px;border-collapse:separate;border-spacing:0;padding:0;background:var(--surface-base)}
@@ -195,22 +204,22 @@ div:has(>.model-selector-trigger-label):hover,button:has(>.model-selector-trigge
 [data-slot=select-select-trigger]:hover{background-color:var(--surface-raised-base-hover)}
 [data-slot=select-select-trigger][data-expanded]{border-color:var(--text-interactive-base)}
 [data-slot=select-select-trigger-value]{white-space:nowrap;overflow:visible;text-overflow:clip}"""),
-    ("KILO-ROUND43-V1", """.am-projects-list{background:linear-gradient(180deg,transparent,transparent 12px,var(--border-weak-base) 12px,var(--border-weak-base) 13px,transparent 13px);background-repeat:no-repeat;background-size:100% 13px;background-position:0 0}
-.am-section-header{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-weak);font-weight:600}
-.am-projects-tools [data-component=icon-button],.am-projects-tools [data-component=button]{border-radius:6px}
-.am-project-item>.am-sidebar-header{padding:6px 8px;gap:8px}
-.am-project-item>.am-sidebar-header .am-sidebar-header-label{font-weight:500}
-.am-project-item:has(.am-local-item-active)>.am-sidebar-header .am-sidebar-header-label{font-weight:600;color:var(--text-strong)}
-.kilo-active-marker{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-interactive-base);background:color-mix(in srgb,var(--text-interactive-base) 16%,transparent);border-radius:4px;padding:1px 5px;margin-left:6px;flex-shrink:0;font-weight:600}
-.am-project-item>.am-sidebar-header>.am-sidebar-header-main{align-items:center;flex:1;min-width:0}
-.am-project-item>.am-sidebar-header>.am-sidebar-header-actions{gap:2px;flex-shrink:0}"""),
-    ("KILO-ROUND44-V1", """.am-projects-list{background:none}
-.am-project{margin-bottom:6px}
-.am-sidebar-header.am-project-item{padding:6px 8px}
-.am-project:has(.am-local-item-active)>.am-sidebar-header{background-color:rgba(3,76,255,.16);border:1px solid rgba(3,76,255,.28)}
-.am-project:has(.am-local-item-active)>.am-sidebar-header .am-sidebar-header-label{font-weight:600;color:var(--text-strong)}"""),
-    ("KILO-ROUND45-V1", """.am-project.kilo-live>.am-sidebar-header{background-color:rgba(3,76,255,.16);border:1px solid rgba(3,76,255,.28);border-radius:10px}
-.am-project.kilo-live>.am-sidebar-header .am-sidebar-header-label{font-weight:600;color:var(--text-strong)}"""),
+    # KILO-ROUND43-V1 REVERTED (2026-09-07 hang: AM sidebar restyle + ACTIVE-MARKER-V3 loop) — do not re-add
+    # KILO-ROUND44-V1 REVERTED (2026-09-07 hang: AM sidebar restyle) — do not re-add
+    # KILO-ROUND45-V1 REVERTED (2026-09-07 hang: kilo-live relies on V3 JS loop) — do not re-add
+    ("KILO-ROUND46-V1", """.am-local-item,.am-worktree-item,.am-project-item>.am-sidebar-header,.am-project>.am-sidebar-header{border-radius:var(--radius-lg,10px)}
+.am-local-item-active,.am-worktree-item-active{background-color:color-mix(in srgb,var(--text-interactive-base) 16%,transparent)!important;border:1px solid color-mix(in srgb,var(--text-interactive-base) 28%,transparent)!important}
+.am-project-item:has(.am-local-item-active)>.am-sidebar-header,.am-project:has(.am-local-item-active)>.am-sidebar-header,.am-project-item:has(.am-worktree-item-active)>.am-sidebar-header,.am-project:has(.am-worktree-item-active)>.am-sidebar-header{background-color:color-mix(in srgb,var(--text-interactive-base) 16%,transparent);border:1px solid color-mix(in srgb,var(--text-interactive-base) 28%,transparent)}
+.am-project-item:has(.am-local-item-active)>.am-sidebar-header .am-sidebar-header-label,.am-project:has(.am-local-item-active)>.am-sidebar-header .am-sidebar-header-label{font-weight:600;color:var(--text-strong)}
+.am-project:has(.am-local-status[data-activity]:not([data-activity="idle"]))>.am-sidebar-header::after,.am-project-item:has(.am-local-status[data-activity]:not([data-activity="idle"]))>.am-sidebar-header::after{content:"active";font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-interactive-base);background:color-mix(in srgb,var(--text-interactive-base) 16%,transparent);border-radius:4px;padding:1px 5px;margin-left:6px;flex-shrink:0;font-weight:600}"""),
+    ("KILO-ROUND47-V1", """.mode-switcher-item,.thinking-selector-item,.model-selector-item{display:flex;align-items:center;gap:8px}
+.mode-switcher-item::before{content:"\\1F4BB";filter:grayscale(1);opacity:.75;font-size:14px;line-height:1;flex-shrink:0}
+.thinking-selector-item::before{content:"\\1F9E0";filter:grayscale(1);opacity:.75;font-size:14px;line-height:1;flex-shrink:0}
+.model-selector-item::before{content:"\\2728";opacity:.75;font-size:14px;line-height:1;flex-shrink:0}
+.prompt-input-hint-selectors [data-component=button]{display:inline-flex;align-items:center;gap:4px}
+.prompt-input-hint-selectors [data-component=button]:nth-child(1)::before{content:"\\2699\\FE0F";font-size:12px;line-height:1}
+.prompt-input-hint-selectors [data-component=button]:nth-child(2)::before{content:"\\26A1";font-size:12px;line-height:1}
+.prompt-input-hint-selectors [data-component=button]:nth-child(3)::before{content:"\\1F9E0";font-size:12px;line-height:1}"""),
 ]
 
 
@@ -239,6 +248,8 @@ def main():
         cur = open(p, errors="ignore").read()
         changed = False
         for mark, css in BLOCKS:
+            if mark in SKIP_CSS_MARKS:
+                continue
             if mark not in cur:
                 cur += "\n/* %s */\n%s\n" % (mark, css)
                 changed = True
@@ -247,6 +258,10 @@ def main():
             open(p, "w", errors="ignore").write(cur)
         else:
             print(name, "already fully patched")
+    if not ENABLE_JS_PATCH:
+        print("JS patch disabled (ENABLE_JS_PATCH=False) — hang fix 2026-09-07")
+        print("DONE. VS Code me Developer: Reload Window karo.")
+        return
     for js_name, olds in JS_DECORATE.items():
         p = os.path.join(dist, js_name)
         if not os.path.exists(p):

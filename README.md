@@ -89,9 +89,11 @@ cp ~/.vscode/extensions/kilocode.kilo-code-*/dist/agent-manager.css.before-ui-pa
 | ROUND40-V1 | 4 CSS | Modern tab bar: inset shade, rounded tabs, stronger active |
 | ROUND41-V1 | 4 CSS | Tag-agnostic settings trigger rounding (`:has`) — later superseded |
 | ROUND42-V1 | 4 CSS | Settings Radix select triggers: 8px + bg + blue expand border (true model picker fix) |
-| ROUND43-V1 | 4 CSS + 2 JS | Sidebar clarity: section eyebrow caps, "active" pill on the project containing the live session, stronger active label, divider between projects |
-| ROUND44-V1 | 4 CSS + 2 JS | Fix: header+item are the same element (child selectors missed), cutting gradient divider removed, active header tint + pill V2 |
-| ROUND45-V1 | 4 CSS + 2 JS | Single live-project pill (non-idle activity only) + 10px header radius |
+| ROUND43-V1 | — | Reverted (2026-09-07 hang: sidebar restyle + ACTIVE-MARKER-V3 loop) |
+| ROUND44-V1 | — | Reverted (2026-09-07 hang: sidebar restyle) |
+| ROUND45-V1 | — | Reverted (2026-09-07 hang: `kilo-live` relied on V3 JS loop) |
+| ROUND46-V1 | 4 CSS | CSS-only active pill: `:has(.am-local-item-active)` tint + `::after` "active" pill on non-idle `[data-activity]` project — zero JS |
+| ROUND47-V1 | 4 CSS | CSS-only chat icons: `::before` emoji on mode/thinking/model rows + hint-selector buttons (`nth-child` positional) — React-safe, no DOM moves |
 | TOKENS-V1 | 4 CSS | Token-compliance pass (kilo-design `tokens.json` v0.2.0) |
 
 </details>
@@ -105,7 +107,12 @@ cp ~/.vscode/extensions/kilocode.kilo-code-*/dist/agent-manager.css.before-ui-pa
   7.5.14: `$Ur`/`Qra` — both covered). If the script prints
   `WARN: decorate signature changed`, the new `decorate` function must be
   located and added to `JS_DECORATE` in `reapply.py`.
-- Tested with Kilo Code 7.5.9 → 7.5.14 on Linux (dark theme).
+- Tested with Kilo Code 7.5.9 → 7.5.15 on Linux (dark theme).
+- **2026-09-07 hang rule:** all `MutationObserver` JS is disabled
+  (`ENABLE_JS_PATCH=False` in `reapply.py`) — the V3 active-marker loop
+  froze the Agent Manager webview. Icons and the active pill are CSS-only
+  (ROUND46/47). Any future observer must follow `SAFE_OBSERVE_TPL`
+  (rAF throttle + `disconnect()` while mutating + `attributeFilter`).
 
 ## License
 

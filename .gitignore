@@ -1,0 +1,5 @@
+# © Mayanktaker Computers & Web Development | https://mayanktaker.com
+__pycache__/
+.serena/
+firebase-debug.log
+.playwright-mcp/
