@@ -94,6 +94,14 @@ cp ~/.vscode/extensions/kilocode.kilo-code-*/dist/agent-manager.css.before-ui-pa
 | ROUND45-V1 | — | Reverted (2026-09-07 hang: `kilo-live` relied on V3 JS loop) |
 | ROUND46-V1 | 4 CSS | CSS-only active pill: `:has(.am-local-item-active)` tint + `::after` "active" pill on non-idle `[data-activity]` project — zero JS |
 | ROUND47-V1 | 4 CSS | CSS-only chat icons: `::before` emoji on mode/thinking/model rows + hint-selector buttons (`nth-child` positional) — React-safe, no DOM moves |
+| ROUND48-V1 | 4 CSS | Agent-list left-align (column kept) + global radius pass: popover/select `14px`, mode/thinking/model/list rows `8px` base — fixes native `2px`/`0` overrides |
+| ROUND49-V1 | 4 CSS | Compact agent rows: icon+name one line (`row+wrap`), desc second line indented with ellipsis — supersedes ROUND48 stacking |
+| ROUND50-V1 | 4 CSS | Global rows `8px` → `10px` (`radius-lg`): mode/thinking/model/select/list rows — restores earlier feel, popover stays `14px` |
+| ROUND51-V1 | 4 CSS | Hint-icon wrapper fix (parent-`nth-child`, all-gear bug), settings triggers + hint buttons `10px`, hover radius keep, desc full-wrap on hover |
+| ROUND52-V1 | 4 CSS | Literal radius (theme `--radius-lg=4px` bypass): rows/triggers fixed `10px`, popover `14px` — supersedes token fallbacks |
+| ROUND53-V1 | 4 CSS | Kilo Settings dropdowns (`popover-trigger` in `settings-row-input`) fixed `10px` — select-trigger rule never matched settings |
+| ROUND54-V1 | 4 CSS | Agent Manager rows/tabs literal `10px` (token override `4px` fix) — radius-only, hang-safe, ROUND43-45 stay reverted |
+| ROUND55-V1 | 4 CSS | Chat hint hover match: wrapper + hover/expanded/focus states literal `10px` with `background-clip` — halo shape same as resting |
 | TOKENS-V1 | 4 CSS | Token-compliance pass (kilo-design `tokens.json` v0.2.0) |
 
 </details>

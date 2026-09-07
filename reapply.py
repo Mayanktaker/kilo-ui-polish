@@ -220,6 +220,71 @@ div:has(>.model-selector-trigger-label):hover,button:has(>.model-selector-trigge
 .prompt-input-hint-selectors [data-component=button]:nth-child(1)::before{content:"\\2699\\FE0F";font-size:12px;line-height:1}
 .prompt-input-hint-selectors [data-component=button]:nth-child(2)::before{content:"\\26A1";font-size:12px;line-height:1}
 .prompt-input-hint-selectors [data-component=button]:nth-child(3)::before{content:"\\1F9E0";font-size:12px;line-height:1}"""),
+    # KILO-ROUND48-V1: agent-list left-align + global radius pass (7.5.15: native 2px/0 overrides).
+    # CSS-only, column layout kept, React-safe — supersedes ROUND22 flat base for model rows.
+    ("KILO-ROUND48-V1", """[data-component=popover-content]{border-radius:var(--radius-xl,14px)!important;overflow:hidden;background-clip:padding-box}
+[data-slot=select-select-content],[data-slot=select-content]{border-radius:var(--radius-xl,14px)!important;overflow:hidden;background-clip:padding-box}
+[data-slot=select-select-content-list],[data-slot=select-content-list]{padding:6px}
+.mode-switcher-list,.thinking-selector-list,.model-selector-list{padding:6px}
+.mode-switcher-item{align-items:flex-start!important;text-align:left}
+.mode-switcher-item-name,.mode-switcher-item-desc{text-align:left;width:100%}
+.mode-switcher-item::before{align-self:flex-start;margin-top:1px}
+.mode-switcher-item,.thinking-selector-item,.model-selector-item{border-radius:var(--radius-md,8px)!important}
+.mode-switcher-item:hover,.mode-switcher-item.selected,.mode-switcher-item[data-active=true],.thinking-selector-item:hover,.thinking-selector-item.selected,.thinking-selector-item[data-active=true]{border-radius:var(--radius-md,8px)!important}
+.model-selector-item{background-color:transparent;border:0;border-radius:var(--radius-md,8px)!important}
+.model-selector-item:hover,.model-selector-item.selected,.model-selector-item[data-active=true]{border-radius:var(--radius-md,8px)!important}
+[data-slot=select-select-item]{border-radius:var(--radius-md,8px)!important}
+[data-slot=list-item]{border-radius:var(--radius-md,8px)!important}"""),
+    # KILO-ROUND49-V1: compact agent rows — icon+name one line, desc second line.
+    # CSS-only row-wrap, React-safe — supersedes ROUND48 column stacking for mode items.
+    ("KILO-ROUND49-V1", """.mode-switcher-item{display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;align-items:center!important;gap:2px 8px!important;padding:6px 10px!important;text-align:left}
+.mode-switcher-item::before{order:0;align-self:center;margin-top:0}
+.mode-switcher-item-name{order:1;flex:1 1 auto;min-width:0;text-align:left;width:auto}
+.mode-switcher-item-desc{order:2;flex:1 1 100%;margin-left:22px;text-align:left;width:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}"""),
+    # KILO-ROUND50-V1: global rows 8px -> 10px (radius-lg) — restores earlier 10px feel.
+    # Supersedes ROUND48 row radius, popover shell stays 14px (xl).
+    ("KILO-ROUND50-V1", """.mode-switcher-item,.thinking-selector-item,.model-selector-item{border-radius:var(--radius-lg,10px)!important}
+.mode-switcher-item:hover,.mode-switcher-item.selected,.mode-switcher-item[data-active=true],.thinking-selector-item:hover,.thinking-selector-item.selected,.thinking-selector-item[data-active=true]{border-radius:var(--radius-lg,10px)!important}
+.model-selector-item{background-color:transparent;border:0;border-radius:var(--radius-lg,10px)!important}
+.model-selector-item:hover,.model-selector-item.selected,.model-selector-item[data-active=true]{border-radius:var(--radius-lg,10px)!important}
+[data-slot=select-select-item]{border-radius:var(--radius-lg,10px)!important}
+[data-slot=list-item]{border-radius:var(--radius-lg,10px)!important}"""),
+    # KILO-ROUND51-V1: hint-icon wrapper fix + settings triggers 10px + hover keep.
+    # ROUND47 button:nth-child matched every wrapper child (all gear) — parent-nth wins by order.
+    ("KILO-ROUND51-V1", """.prompt-input-hint-selectors>[data-component=tooltip-trigger]:nth-child(1) [data-component=button]::before,.prompt-input-hint-selectors>*:nth-child(1) [data-component=button]::before{content:"\\2699\\FE0F"!important}
+.prompt-input-hint-selectors>[data-component=tooltip-trigger]:nth-child(2) [data-component=button]::before,.prompt-input-hint-selectors>*:nth-child(2) [data-component=button]::before{content:"\\26A1"!important}
+.prompt-input-hint-selectors>[data-component=tooltip-trigger]:nth-child(3) [data-component=button]::before,.prompt-input-hint-selectors>*:nth-child(3) [data-component=button]::before{content:"\\1F9E0"!important}
+.prompt-input-hint-selectors [data-component=button]{border-radius:var(--radius-lg,10px)!important}
+.prompt-input-hint-selectors [data-component=button]:hover{border-radius:var(--radius-lg,10px)!important}
+[data-slot=select-select-trigger]{border-radius:var(--radius-lg,10px)!important}
+[data-slot=select-select-trigger]:hover,[data-slot=select-select-trigger][data-expanded]{border-radius:var(--radius-lg,10px)!important}
+[data-slot=settings-nav-item]{border-radius:var(--radius-lg,10px)!important}
+[data-slot=settings-nav-item]:hover{border-radius:var(--radius-lg,10px)!important}
+[data-slot=list-item]:hover,[data-slot=select-select-item]:hover{border-radius:var(--radius-lg,10px)!important}
+.mode-switcher-item:hover .mode-switcher-item-desc{white-space:normal;overflow:visible;text-overflow:clip}"""),
+    # KILO-ROUND52-V1: literal radius (theme --radius-lg=4px resolves small, fallback ignored).
+    # Fixed 10px rows/triggers + 14px popover — supersedes token-based ROUND50/51 radius.
+    ("KILO-ROUND52-V1", """[data-component=popover-content],[data-slot=select-select-content],[data-slot=select-content]{border-radius:14px!important;overflow:hidden;background-clip:padding-box}
+.mode-switcher-item,.thinking-selector-item,.model-selector-item,.mode-switcher-item:hover,.mode-switcher-item.selected,.mode-switcher-item[data-active=true],.thinking-selector-item:hover,.thinking-selector-item.selected,.thinking-selector-item[data-active=true],.model-selector-item:hover,.model-selector-item.selected,.model-selector-item[data-active=true]{border-radius:10px!important}
+[data-slot=select-select-item],[data-slot=select-select-item]:hover,[data-slot=list-item],[data-slot=list-item]:hover{border-radius:10px!important}
+[data-slot=select-select-trigger],[data-slot=select-select-trigger]:hover,[data-slot=select-select-trigger][data-expanded]{border-radius:10px!important}
+.prompt-input-hint-selectors [data-component=button],[data-slot=settings-nav-item]{border-radius:10px!important}"""),
+    # KILO-ROUND53-V1: Kilo Settings dropdowns are popover-trigger (not select-trigger).
+    # Literal 10px — supersedes native small radius in settings-row-input (max 160px).
+    ("KILO-ROUND53-V1", """[data-slot=popover-trigger]{border-radius:10px!important}
+[data-slot=settings-row-input] [data-slot=popover-trigger]{border-radius:10px!important;max-width:100%}
+[data-slot=popover-trigger]:hover,[data-slot=popover-trigger][data-expanded]{border-radius:10px!important}"""),
+    # KILO-ROUND54-V1: AM rows literal 10px (token rule resolves 4px, sits after literal).
+    # Radius-only, hang-safe — no sidebar restyle, ROUND43-45 stay reverted.
+    ("KILO-ROUND54-V1", """.am-local-item,.am-worktree-item,.am-project-item>.am-sidebar-header,.am-project>.am-sidebar-header,.am-project-item .am-sidebar-header{border-radius:10px!important}
+.am-local-item:hover,.am-worktree-item:hover,.am-local-item-active,.am-worktree-item-active{border-radius:10px!important}
+.am-wt-group-header,.am-section-header{border-radius:10px!important}
+.session-tab-bar .am-tab,.am-tab{border-radius:10px 10px 0 0!important}"""),
+    # KILO-ROUND55-V1: chat hint hover match — wrapper + all button states literal 10px.
+    # Hover halo paints on tooltip-trigger too, radius-only so tooltip still shows.
+    ("KILO-ROUND55-V1", """.prompt-input-hint-selectors>[data-component=tooltip-trigger]{border-radius:10px!important}
+.prompt-input-hint-selectors [data-component=button]{border-radius:10px!important;background-clip:padding-box}
+.prompt-input-hint-selectors [data-component=button]:hover,.prompt-input-hint-selectors [data-component=button][data-expanded],.prompt-input-hint-selectors [data-component=button]:focus-visible,.prompt-input-hint-selectors [data-component=button]:active{border-radius:10px!important;background-clip:padding-box}"""),
 ]
 
 
