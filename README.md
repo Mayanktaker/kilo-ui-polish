@@ -104,6 +104,7 @@ cp ~/.vscode/extensions/kilocode.kilo-code-*/dist/agent-manager.css.before-ui-pa
 | ROUND55-V1 | 4 CSS | Chat hint hover match: wrapper + hover/expanded/focus states literal `10px` with `background-clip` — halo shape same as resting |
 | ROUND56-V1 | 4 CSS | Dialogs + inputs: shell `14px` (native `2px`), inputs/tabs/pills/buttons `10px` — radius-only |
 | ROUND57-V1 | 4 CSS | Worktree dialog leftovers (real selectors): New/Import tabs + name input `10px`, version strip `10px` + inner pills `8px` |
+| ROUND58-V1 | 4 CSS | Table header/content alignment: single table context (`display:table` on table only), shared auto layout, header + body both wrap (`min-width:0`, `overflow-wrap:anywhere`) — supersedes TABLE-FIX split-context drift |
 | TOKENS-V1 | 4 CSS | Token-compliance pass (kilo-design `tokens.json` v0.2.0) |
 
 </details>

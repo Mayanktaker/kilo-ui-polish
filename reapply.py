@@ -299,6 +299,23 @@ div:has(>.model-selector-trigger-label):hover,button:has(>.model-selector-trigge
 .am-nv-pills{border-radius:10px!important}
 .am-nv-pill{border-radius:8px!important}
 .am-nv-pill-compare,.am-nv-pill-back{border-radius:8px!important}"""),
+    # KILO-ROUND58-V1: table header/content alignment fix (TABLE-FIX-V1 supersede).
+    # Root cause: table{display:block}+thead/tbody{display:table;width:100%} made
+    # header and body SEPARATE table contexts -> independent column widths +
+    # th{white-space:nowrap} vs td{wrap} widened the drift (see screenshot).
+    # Fix: single table context (display:table on table only, native row-group/
+    # row/cell below), auto layout so header+body share widths, both wrap with
+    # min-width:0 + overflow-wrap:anywhere. Scroll stays on the JS wrapper div
+    # (already correct); bare tables wrap responsively instead of misaligning.
+    ("KILO-ROUND58-V1", """[data-component=markdown] table{width:100%;max-width:100%;display:table;table-layout:auto;overflow:visible;margin:16px 0;font-size:var(--font-size-base);border:1px solid var(--border-weak-base);border-radius:10px;border-collapse:separate;border-spacing:0;padding:0;background:var(--surface-base)}
+[data-component=markdown] thead,[data-component=markdown] tbody{display:table-row-group;width:auto;margin:0;border-collapse:separate;border-spacing:0}
+[data-component=markdown] tr{display:table-row;width:auto}
+[data-component=markdown] th,[data-component=markdown] td{display:table-cell;padding:10px 12px;text-align:start;vertical-align:top;border:0;border-bottom:1px solid var(--border-weaker-base);border-right:1px solid var(--border-weaker-base);min-width:0;white-space:normal;overflow-wrap:anywhere;word-break:break-word}
+[data-component=markdown] th{white-space:normal;overflow-wrap:anywhere}
+[data-component=markdown-table-wrapper]{margin:16px 0;border:1px solid var(--border-weak-base);border-radius:10px;overflow:auto;max-width:100%;background:var(--surface-base)}
+[data-component=markdown-table-wrapper] table{border:0;border-radius:0;margin:0;display:table;overflow:visible;width:100%;max-width:none;table-layout:auto}
+[data-component=markdown-table-wrapper] thead,[data-component=markdown-table-wrapper] tbody{display:table-row-group;width:auto}
+[data-component=markdown-table-wrapper] tr{display:table-row}"""),
 ]
 
 
