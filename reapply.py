@@ -316,6 +316,12 @@ div:has(>.model-selector-trigger-label):hover,button:has(>.model-selector-trigge
 [data-component=markdown-table-wrapper] table{border:0;border-radius:0;margin:0;display:table;overflow:visible;width:100%;max-width:none;table-layout:auto}
 [data-component=markdown-table-wrapper] thead,[data-component=markdown-table-wrapper] tbody{display:table-row-group;width:auto}
 [data-component=markdown-table-wrapper] tr{display:table-row}"""),
+    # KILO-ROUND59-V1: active project card — gap between projects + full-card
+    # focus (CSS-only, covers .am-project + .am-project-item variants).
+    ("KILO-ROUND59-V1", """.am-project,.am-project-item{margin:2px 6px 8px!important;border-radius:10px!important;border:1px solid rgba(140,140,140,.12);background-color:color-mix(in srgb,var(--surface-raised-base) 45%,transparent);background-clip:padding-box}
+.am-project:hover,.am-project-item:hover{border-color:rgba(140,140,140,.3)}
+.am-project:has(.am-local-item-active),.am-project:has(.am-worktree-item-active),.am-project-item:has(.am-local-item-active),.am-project-item:has(.am-worktree-item-active){background-color:color-mix(in srgb,var(--text-interactive-base) 16%,transparent)!important;border:1px solid color-mix(in srgb,var(--text-interactive-base) 28%,transparent)!important}
+.am-project:has(.am-local-item-active)>.am-sidebar-header .am-sidebar-header-label,.am-project:has(.am-worktree-item-active)>.am-sidebar-header .am-sidebar-header-label,.am-project-item:has(.am-local-item-active)>.am-sidebar-header .am-sidebar-header-label,.am-project-item:has(.am-worktree-item-active)>.am-sidebar-header .am-sidebar-header-label{font-weight:600;color:var(--text-strong)}"""),
 ]
 
 

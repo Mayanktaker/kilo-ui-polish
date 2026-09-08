@@ -105,6 +105,7 @@ cp ~/.vscode/extensions/kilocode.kilo-code-*/dist/agent-manager.css.before-ui-pa
 | ROUND56-V1 | 4 CSS | Dialogs + inputs: shell `14px` (native `2px`), inputs/tabs/pills/buttons `10px` — radius-only |
 | ROUND57-V1 | 4 CSS | Worktree dialog leftovers (real selectors): New/Import tabs + name input `10px`, version strip `10px` + inner pills `8px` |
 | ROUND58-V1 | 4 CSS | Table header/content alignment: single table context (`display:table` on table only), shared auto layout, header + body both wrap (`min-width:0`, `overflow-wrap:anywhere`) — supersedes TABLE-FIX split-context drift |
+| ROUND59-V1 | 4 CSS | Active project card: every project gets `10px` card + gap (margin), active project (has active session/worktree) full blue-tint card + blue border + semibold label — CSS-only `:has`, ROUND46 pill kept |
 | TOKENS-V1 | 4 CSS | Token-compliance pass (kilo-design `tokens.json` v0.2.0) |
 
 </details>
