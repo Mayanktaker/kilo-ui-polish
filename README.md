@@ -12,10 +12,10 @@ A hot-patch that brings a polished, cohesive look to the [Kilo Code](https://git
 | Area | What you get |
 |---|---|
 | **Markdown tables** | Full border box with rounded corners on all four sides, tinted header with a `2px` rule, zebra rows, row hover, horizontal scroll that never breaks column alignment |
-| **Chat messages** | User messages in a blue-tinted bubble that stands out during long sessions; assistant replies stay clean; copy/feedback icons moved outside the card |
+| **Chat messages** | User messages in a blue-gradient bubble (`135deg` 30%→8%) with neutral border; assistant replies stay clean; copy/feedback icons moved outside the card |
 | **Question prompts** | Two-tone card — dark header band, separate answers list with clean hover states |
 | **Model picker** | Wider popover with full model names (no truncation), rounded search and rows, prominent select-style triggers, OpenChamber-inspired selection |
-| **Agent Manager sidebar** | 10px project/session/worktree rows, blue highlight on the active project and session |
+| **Agent Manager sidebar** | 10px project cards with gaps, active project/session gradient (`135deg` blue 30%→8%) with neutral borders — no blue borders anywhere |
 | **Global consistency** | Buttons, tags, badges, tool cards, and list items unified on a 4 / 8 / 10 / 14px radius scale |
 
 All values are aligned with the
@@ -106,6 +106,8 @@ cp ~/.vscode/extensions/kilocode.kilo-code-*/dist/agent-manager.css.before-ui-pa
 | ROUND57-V1 | 4 CSS | Worktree dialog leftovers (real selectors): New/Import tabs + name input `10px`, version strip `10px` + inner pills `8px` |
 | ROUND58-V1 | 4 CSS | Table header/content alignment: single table context (`display:table` on table only), shared auto layout, header + body both wrap (`min-width:0`, `overflow-wrap:anywhere`) — supersedes TABLE-FIX split-context drift |
 | ROUND59-V1 | 4 CSS | Active project card: every project gets `10px` card + gap (margin), active project (has active session/worktree) full blue-tint card + blue border + semibold label — CSS-only `:has`, ROUND46 pill kept |
+| ROUND60-V1 | 4 CSS | Subtle blue gradient (`135deg` 20%→10% tint): user bubble + active project card + active session rows — `background` shorthand beats flat tints, borders/text untouched |
+| ROUND61-V1 | 4 CSS | Visible gradient (`135deg` 30%→8%) + zero blue borders: bubble/project/rows keep gradient, all patch blue borders → neutral weak/gray, selected-option blue ring removed |
 | TOKENS-V1 | 4 CSS | Token-compliance pass (kilo-design `tokens.json` v0.2.0) |
 
 </details>

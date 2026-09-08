@@ -322,6 +322,23 @@ div:has(>.model-selector-trigger-label):hover,button:has(>.model-selector-trigge
 .am-project:hover,.am-project-item:hover{border-color:rgba(140,140,140,.3)}
 .am-project:has(.am-local-item-active),.am-project:has(.am-worktree-item-active),.am-project-item:has(.am-local-item-active),.am-project-item:has(.am-worktree-item-active){background-color:color-mix(in srgb,var(--text-interactive-base) 16%,transparent)!important;border:1px solid color-mix(in srgb,var(--text-interactive-base) 28%,transparent)!important}
 .am-project:has(.am-local-item-active)>.am-sidebar-header .am-sidebar-header-label,.am-project:has(.am-worktree-item-active)>.am-sidebar-header .am-sidebar-header-label,.am-project-item:has(.am-local-item-active)>.am-sidebar-header .am-sidebar-header-label,.am-project-item:has(.am-worktree-item-active)>.am-sidebar-header .am-sidebar-header-label{font-weight:600;color:var(--text-strong)}"""),
+    # KILO-ROUND60-V1: subtle blue gradient on user bubble + active cards.
+    # 135deg 20%->10% tint via color-mix (theme-safe, text contrast kept).
+    # background shorthand + !important beats TOKENS/ROUND59 flat colors.
+    ("KILO-ROUND60-V1", """[data-component=user-message] [data-slot=user-message-text]{background:linear-gradient(135deg,color-mix(in srgb,var(--text-interactive-base) 20%,transparent),color-mix(in srgb,var(--text-interactive-base) 10%,transparent))!important}
+.am-project:has(.am-local-item-active),.am-project:has(.am-worktree-item-active),.am-project-item:has(.am-local-item-active),.am-project-item:has(.am-worktree-item-active){background:linear-gradient(135deg,color-mix(in srgb,var(--text-interactive-base) 20%,transparent),color-mix(in srgb,var(--text-interactive-base) 10%,transparent))!important}
+.am-local-item-active,.am-worktree-item-active{background:linear-gradient(135deg,color-mix(in srgb,var(--text-interactive-base) 20%,transparent),color-mix(in srgb,var(--text-interactive-base) 10%,transparent))!important}"""),
+    # KILO-ROUND61-V1: visible gradient + zero blue borders (user ask).
+    # Gradient 30%->8% (ROUND60 20%->10% too subtle, invisible in screenshots).
+    # Borders: every patch-added interactive-blue border -> neutral weak/gray.
+    # Backgrounds keep blue tint/gradient (active signal stays, borderless).
+    ("KILO-ROUND61-V1", """[data-component=user-message] [data-slot=user-message-text]{background:linear-gradient(135deg,color-mix(in srgb,var(--text-interactive-base) 30%,transparent),color-mix(in srgb,var(--text-interactive-base) 8%,transparent))!important;border:1px solid var(--border-weak-base)!important;background-clip:padding-box}
+.am-project:has(.am-local-item-active),.am-project:has(.am-worktree-item-active),.am-project-item:has(.am-local-item-active),.am-project-item:has(.am-worktree-item-active){background:linear-gradient(135deg,color-mix(in srgb,var(--text-interactive-base) 30%,transparent),color-mix(in srgb,var(--text-interactive-base) 8%,transparent))!important;border:1px solid rgba(140,140,140,.25)!important}
+.am-project-item:has(.am-local-item-active)>.am-sidebar-header,.am-project:has(.am-local-item-active)>.am-sidebar-header,.am-project-item:has(.am-worktree-item-active)>.am-sidebar-header,.am-project:has(.am-worktree-item-active)>.am-sidebar-header{background:transparent;border-color:transparent}
+.am-local-item-active,.am-worktree-item-active{background:linear-gradient(135deg,color-mix(in srgb,var(--text-interactive-base) 30%,transparent),color-mix(in srgb,var(--text-interactive-base) 8%,transparent))!important;border:1px solid rgba(140,140,140,.25)!important}
+[data-slot=question-option][data-selected=true],[data-slot=question-option][aria-checked=true]{border-color:var(--border-strong-base,var(--border-weak-base))!important;box-shadow:none!important}
+[data-slot=question-option]:hover{border-color:var(--border-strong-base,var(--border-weak-base))!important;box-shadow:none!important}
+[data-slot=select-select-trigger][data-expanded],button[data-component=button]:has(.model-selector-trigger-label):hover,div:has(>.model-selector-trigger-label):hover,button:has(>.model-selector-trigger-label):hover,[data-slot=popover-trigger]:hover,[data-slot=popover-trigger][data-expanded],[data-slot=select-select-trigger]:hover{border-color:rgba(140,140,140,.35)!important}"""),
 ]
 
 
